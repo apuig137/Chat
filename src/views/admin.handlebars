@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./admin.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1>{{name}}</h1>
+        <button id="logout">Cerrar Sesión</button>
+    </nav>
+    <main>
+        <ul class="list-group">
+            {{#if messages}}
+                {{#each messages}}
+                    <li class="message-item">
+                        <div class="user-name">{{this.user}}: {{this.content}}</div>
+                        <div>
+                            <button class="delete-message" data-id="{{this._id}}">Eliminar</button>
+                            <button class="edit-message" data-id="{{this._id}}">Editar</button>
+                        </div>
+                    </li>
+                {{/each}}
+            {{/if}}
+        </ul>
+        <form class="message-form">
+            <input type="text" placeholder="Escribe un mensaje..." />
+            <button type="submit">Enviar</button>
+        </form>
+    </main>
+
+    <script src="http://localhost:8080/socket.io/socket.io.js"></script>
+    <script src="./admin.js"></script>
+</body>
+</html>
