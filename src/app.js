@@ -14,12 +14,15 @@ import MongoStore from "connect-mongo";
 import session from "express-session";
 import passport from "passport"
 import initializePassport from "./config/passport.config.js"
+import cors from "cors"
 
 dotenv.config()
 
 const app = express()
 const PORT = 8080
 const MONGO = process.env.DB_URL
+
+app.use(cors())
 
 mongoose.connect(`mongodb+srv://apuig137:${process.env.DB_PSW}@cluster0.qgngvh8.mongodb.net/`,{
     useNewUrlParser: true,
