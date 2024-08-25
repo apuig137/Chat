@@ -15,12 +15,15 @@ import session from "express-session";
 import passport from "passport"
 import initializePassport from "./config/passport.config.js"
 import cors from "cors"
+import compression from "compression"
 
 dotenv.config()
 
 const app = express()
 const PORT = process.env.PORT || 8080;
 const MONGO = process.env.DB_URL
+
+app.use(compression())
 
 app.use(cors())
 
