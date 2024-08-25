@@ -21,7 +21,8 @@ export const login = async (req, res) => {
         }
         res.send({ status: "success", payload: req.session.user, message: "Logueo realizado" });
     } catch (error) {
-        console.log(error)
+        console.log(error);
+        res.status(500).send("Internal Server Error");
     }
 }
 
