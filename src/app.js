@@ -24,7 +24,7 @@ const MONGO = process.env.DB_URL
 
 app.use(cors())
 
-mongoose.connect(`mongodb+srv://apuig137:${process.env.DB_PSW}@cluster0.qgngvh8.mongodb.net/`,{
+mongoose.connect(`mongodb+srv://apuig137:${process.env.DB_PSW}@cluster0.qgngvh8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`,{
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
