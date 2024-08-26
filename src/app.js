@@ -25,7 +25,12 @@ const MONGO = process.env.DB_URL
 
 app.use(compression())
 
-app.use(cors())
+app.use(cors({
+    origin: ["http://localhost:8080", "https://livechat-zk2w.onrender.com/login"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true
+}))
 
 mongoose.connect(`mongodb+srv://apuig137:${process.env.DB_PSW}@cluster0.qgngvh8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`,{
     useNewUrlParser: true,
