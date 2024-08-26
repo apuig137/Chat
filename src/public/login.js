@@ -5,7 +5,7 @@ form.addEventListener('submit', e => {
     const data = new FormData(form);
     const obj = {};
     data.forEach((value, key) => obj[key] = value);
-    fetch('/user/login', {
+    fetch('https://livechat-zk2w.onrender.com/user/login', {
         method: 'POST',
         body: JSON.stringify(obj),
         headers: {
