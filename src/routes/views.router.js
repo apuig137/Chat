@@ -14,7 +14,7 @@ export const adminAccess = (req, res, next) => {
 }
 
 router.get("/", privateAccess, async (req, res) => {
-    const response = await fetch('http://localhost:8080/chat/getchat');
+    const response = await fetch('https://livechat-zk2w.onrender.com/chat/getchat');
     const data = await response.json();
     res.render("index", {
         messages: data.payload
@@ -30,7 +30,7 @@ router.get("/register", async (req, res) => {
 })
 
 router.get("/admin", adminAccess, async (req, res) => {
-    const response = await fetch('http://localhost:8080/chat/getchat');
+    const response = await fetch('https://livechat-zk2w.onrender.com/chat/getchat');
     const data = await response.json();
     res.render("admin", {
         name: req.session.user.name,
