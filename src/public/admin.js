@@ -20,7 +20,7 @@ let userName = getCookie('username');
 
 logoutButton.addEventListener("click", (e) => {
     e.preventDefault()
-    fetch('/user/logout', {
+    fetch('https://livechat-zk2w.onrender.com/user/logout', {
         method: 'GET',
         credentials: 'same-origin'
     })
