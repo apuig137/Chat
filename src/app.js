@@ -26,7 +26,7 @@ const MONGO = process.env.DB_URL
 app.use(compression())
 
 app.use(cors({
-    origin: ["http://localhost:8080", "https://livechat-zk2w.onrender.com/login"],
+    origin: ["http://localhost:8080", "https://livechat-zk2w.onrender.com"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true
