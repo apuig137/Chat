@@ -18,19 +18,12 @@ function getCookie(name) {
 
 let userName = getCookie('username');
 
-logoutButton.addEventListener("click", (e) => {
+form.addEventListener("submit", (e) => {
     e.preventDefault()
-    fetch('https://livechat-zk2w.onrender.com/user/logout', {
-        method: 'GET',
-        credentials: 'same-origin'
-    })
-    .then(response => {
-        if (response.status === 200) {
-            window.location.href = '/login';
-        } else {
-            console.error('Error al cerrar sesión');
-        }
-    })
+    if(input.value){
+        socket.emit("chat", input.value, userName)
+        input.value = ""
+    }
 })
 
 socket.on("chat", (message, messageId) => {
@@ -83,12 +76,19 @@ socket.on("chat", (message, messageId) => {
     window.scrollTo(0, document.body.scrollHeight);
 });
 
-form.addEventListener("submit", (e) => {
+logoutButton.addEventListener("click", (e) => {
     e.preventDefault()
-    if(input.value){
-        socket.emit("chat", input.value, userName)
-        input.value = ""
-    }
+    fetch('https://livechat-zk2w.onrender.com/user/logout', {
+        method: 'GET',
+        credentials: 'same-origin'
+    })
+    .then(response => {
+        if (response.status === 200) {
+            window.location.href = '/login';
+        } else {
+            console.error('Error al cerrar sesión');
+        }
+    })
 })
 
 document.addEventListener('DOMContentLoaded', () => {

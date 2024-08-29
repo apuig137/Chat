@@ -17,6 +17,7 @@ router.get("/", privateAccess, async (req, res) => {
     const response = await fetch('https://livechat-zk2w.onrender.com/chat/getchat');
     const data = await response.json();
     res.render("index", {
+        name: req.session.user.name,
         messages: data.payload
     })
 })
