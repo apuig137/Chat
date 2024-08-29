@@ -83,7 +83,7 @@ io.on('connection', (socket) => {
         const newMessage = new messageModel({ content: message, user: userName });
         await newMessage.save();
         const messageId = newMessage._id
-        io.emit("chat", message, messageId)
+        io.emit("chat", message, userName)
     });
 
     socket.on('editMessage', async (messageId, newMessage) => {
