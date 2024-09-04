@@ -129,11 +129,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-socket.on('messageEdited', (messageId, newMessage) => {    
+socket.on('messageEdited', (messageId, newMessage, userMessage) => {    
     try {
         const messageItem = document.querySelector(`.edit-message[data-id="${messageId}"]`).closest('li');
         const messageContent = messageItem.querySelector('.user-name'); // Assuming this class holds the entire message content
-        messageContent.textContent = `${userName}: ${newMessage}`;
+        messageContent.textContent = `${userMessage}: ${newMessage}`;
     } catch (error) {
         console.log(error)
     }

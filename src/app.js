@@ -89,10 +89,11 @@ io.on('connection', (socket) => {
     socket.on('editMessage', async (messageId, newMessage) => {
         try {
             const message = await messageModel.findById(messageId);
+            const userMessage = message.user
             if (message) {
                 message.content = newMessage;
                 await message.save();
-                io.emit('messageEdited', messageId, newMessage);
+                io.emit('messageEdited', messageId, newMessage, userMessage);
             }
         } catch (error) {
             console.log(error);
