@@ -26,14 +26,14 @@ form.addEventListener("submit", (e) => {
     }
 })
 
-socket.on("chat", (message, messageId) => {
+socket.on("chat", (message, messageId, user) => {
     let item = document.createElement("li");
     item.classList.add("message-item");
     
     // contenido del mensaje
     let messageContent = document.createElement("div");
     messageContent.classList.add("user-name")
-    messageContent.textContent = `${userName}: ${message}`;
+    messageContent.textContent = `${user}: ${message}`;
     
     // div de los botones
     let buttonsDiv = document.createElement("div");
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
 socket.on('messageEdited', (messageId, newMessage, userMessage) => {    
     try {
         const messageItem = document.querySelector(`.edit-message[data-id="${messageId}"]`).closest('li');
-        const messageContent = messageItem.querySelector('.user-name'); // Assuming this class holds the entire message content
+        const messageContent = messageItem.querySelector('.user-name');
         messageContent.textContent = `${userMessage}: ${newMessage}`;
     } catch (error) {
         console.log(error)

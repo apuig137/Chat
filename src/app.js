@@ -79,11 +79,10 @@ const io = new Server(httpServer);
 io.on('connection', (socket) => {
     console.log('Nuevo cliente conectado');
     
-    socket.on('chat', async (message, userName) => {
-        const newMessage = new messageModel({ content: message, user: userName });
+    socket.on('chat', async (message, user) => {
+        const newMessage = new messageModel({ content: message, user: user });
         await newMessage.save();
-        const messageId = newMessage._id
-        io.emit("chat", message, userName)
+        io.emit("chat", message, user)
     });
 
     socket.on('editMessage', async (messageId, newMessage) => {

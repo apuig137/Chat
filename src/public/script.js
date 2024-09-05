@@ -40,9 +40,9 @@ form.addEventListener("submit", (e) => {
     }
 })
 
-socket.on("chat", (message, userName) => {
+socket.on("chat", (message, user) => {
     let item = document.createElement("li")
-    item.textContent = `${userName}: ${message}`
+    item.textContent = `${user}: ${message}`
     item.classList.add("message-item")
     list.appendChild(item)
     window.scrollTo(0, document.body.scrollHeight)
