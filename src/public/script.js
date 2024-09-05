@@ -40,7 +40,7 @@ form.addEventListener("submit", (e) => {
     }
 })
 
-socket.on("chat", (message, user) => {
+socket.on("chat", (message, messageId, user) => {
     let item = document.createElement("li")
     item.textContent = `${user}: ${message}`
     item.classList.add("message-item")
