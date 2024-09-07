@@ -47,3 +47,24 @@ socket.on("chat", (message, messageId, user) => {
     list.appendChild(item)
     window.scrollTo(0, document.body.scrollHeight)
 })
+
+socket.on('messageDeleted', (messageId) => {
+    try {
+        const messageItem = document.querySelector(`.delete-message[data-id="${messageId}"]`).closest('li');
+        if (messageItem) {
+            messageItem.remove();
+        }
+    } catch (error) {
+        console.log(error)
+    }
+});
+
+socket.on('messageEdited', (messageId, newMessage, userMessage) => {    
+    try {
+        const messageItem = document.querySelector(`.edit-message[data-id="${messageId}"]`).closest('li');
+        const messageContent = messageItem.querySelector('.user-name');
+        messageContent.textContent = `${userMessage}: ${newMessage}`;
+    } catch (error) {
+        console.log(error)
+    }
+});
