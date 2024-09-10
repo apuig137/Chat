@@ -49,7 +49,6 @@ socket.on("chat", (message, messageId, user) => {
 })
 
 socket.on('messageDeleted', (messageId) => {
-    console.log(`Mensaje eliminado con ID: ${messageId}`);
     try {
         const messageItem = document.querySelector(`.message-item[data-id="${messageId}"]`);
         if (messageItem) {
@@ -61,9 +60,8 @@ socket.on('messageDeleted', (messageId) => {
 });
 
 socket.on('messageEdited', (messageId, newMessage, userMessage) => {
-    console.log(`Mensaje editado con ID: ${messageId}`);
     try {
-        const messageItem = document.querySelector(`li[data-id="${messageId}"]`);
+        const messageItem = document.querySelector(`.message-item[data-id="${messageId}"]`);
         if (messageItem) {
             messageItem.textContent = `${userMessage}: ${newMessage}`;
         }
