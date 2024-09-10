@@ -29,6 +29,7 @@ form.addEventListener("submit", (e) => {
 socket.on("chat", (message, messageId, user) => {
     let item = document.createElement("li");
     item.classList.add("message-item");
+    item.setAttribute("data-id", messageId);
     
     // contenido del mensaje
     let messageContent = document.createElement("div");
