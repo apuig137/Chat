@@ -100,6 +100,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('deleteMessage', async (messageId) => {
+        console.log("Delete server")
         await messageModel.deleteOne({ _id: messageId });
         io.emit('messageDeleted', messageId);
     });
