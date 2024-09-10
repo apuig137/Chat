@@ -92,7 +92,6 @@ logoutButton.addEventListener("click", (e) => {
 })
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("Delete admin I")
     const deleteButtons = document.querySelectorAll('.delete-message');
 
     deleteButtons.forEach(button => {
@@ -106,7 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 socket.on('messageDeleted', (messageId) => {
-    console.log("Delete admin II")
     try {
         const messageItem = document.querySelector(`.delete-message[data-id="${messageId}"]`).closest('li');
         if (messageItem) {

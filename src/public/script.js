@@ -51,7 +51,7 @@ socket.on("chat", (message, messageId, user) => {
 socket.on('messageDeleted', (messageId) => {
     console.log(`Mensaje eliminado con ID: ${messageId}`);
     try {
-        const messageItem = document.querySelector(`li[data-id="${messageId}"]`);
+        const messageItem = document.querySelector(`.message-item[data-id="${messageId}"]`);
         if (messageItem) {
             messageItem.remove();
         }
