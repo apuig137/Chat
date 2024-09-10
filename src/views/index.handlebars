@@ -14,7 +14,7 @@
         <ul class="list-group">
             {{#if messages}}
                 {{#each messages}}
-                    <li class="message-item">{{this.user}}: {{this.content}}</li>
+                    <li class="message-item" data-id="{{this._id}}">{{this.user}}: {{this.content}}</li>
                 {{/each}}
             {{/if}}
         </ul>

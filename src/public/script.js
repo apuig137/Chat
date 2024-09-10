@@ -49,24 +49,25 @@ socket.on("chat", (message, messageId, user) => {
 })
 
 socket.on('messageDeleted', (messageId) => {
-    console.log(`Mensaje eliminado con ID: ${messageId}`)
+    console.log(`Mensaje eliminado con ID: ${messageId}`);
     try {
-        const messageItem = document.querySelector(`.delete-message[data-id="${messageId}"]`).closest('li');
+        const messageItem = document.querySelector(`li[data-id="${messageId}"]`);
         if (messageItem) {
             messageItem.remove();
         }
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 });
 
-socket.on('messageEdited', (messageId, newMessage, userMessage) => {   
-    console.log(`Mensaje editado con ID: ${messageId}`) 
+socket.on('messageEdited', (messageId, newMessage, userMessage) => {
+    console.log(`Mensaje editado con ID: ${messageId}`);
     try {
-        const messageItem = document.querySelector(`.edit-message[data-id="${messageId}"]`).closest('li');
-        const messageContent = messageItem.querySelector('.user-name');
-        messageContent.textContent = `${userMessage}: ${newMessage}`;
+        const messageItem = document.querySelector(`li[data-id="${messageId}"]`);
+        if (messageItem) {
+            messageItem.textContent = `${userMessage}: ${newMessage}`;
+        }
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 });
