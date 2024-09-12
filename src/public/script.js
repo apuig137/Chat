@@ -44,6 +44,7 @@ socket.on("chat", (message, messageId, user) => {
     let item = document.createElement("li")
     item.textContent = `${user}: ${message}`
     item.classList.add("message-item")
+    item.setAttribute("data-id", messageId);
     list.appendChild(item)
     window.scrollTo(0, document.body.scrollHeight)
 })
