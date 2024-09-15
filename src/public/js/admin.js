@@ -5,6 +5,8 @@ let form = document.querySelector("form")
 let input = document.querySelector("input")
 let list = document.querySelector("ul")
 
+list.scrollTop = list.scrollHeight;
+
 function getCookie(name) {
     let cookieArr = document.cookie.split(";");
     for (let i = 0; i < cookieArr.length; i++) {
@@ -74,7 +76,8 @@ socket.on("chat", (message, messageId, user) => {
     
     // añadir el nuevo elemento a la lista
     list.appendChild(item);
-    window.scrollTo(0, document.body.scrollHeight);
+    
+    list.scrollTop = list.scrollHeight;
 });
 
 logoutButton.addEventListener("click", (e) => {

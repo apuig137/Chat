@@ -4,6 +4,8 @@ let input = document.querySelector("input")
 let list = document.querySelector("ul")
 let logoutButton = document.getElementById("logout")
 
+list.scrollTop = list.scrollHeight;
+
 logoutButton.addEventListener("click", (e) => {
     e.preventDefault()
     fetch('https://livechat-zk2w.onrender.com/user/logout', {
@@ -41,13 +43,13 @@ form.addEventListener("submit", (e) => {
 })
 
 socket.on("chat", (message, messageId, user) => {
-    let item = document.createElement("li")
-    item.textContent = `${user}: ${message}`
-    item.classList.add("message-item")
+    let item = document.createElement("li");
+    item.textContent = `${user}: ${message}`;
+    item.classList.add("message-item");
     item.setAttribute("data-id", messageId);
-    list.appendChild(item)
-    window.scrollTo(0, document.body.scrollHeight)
-})
+    list.appendChild(item);
+    list.scrollTop = list.scrollHeight;
+});
 
 socket.on('messageDeleted', (messageId) => {
     try {

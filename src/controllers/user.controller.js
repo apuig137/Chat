@@ -10,7 +10,7 @@ export const login = async (req, res) => {
         if (!req.user) return res.status(400).send({ status: "error", error: "Incorrect credentials" });
         
         res.cookie('username', req.user.name, {
-            maxAge: 3600000, // 1 hora en milisegundos
+            maxAge: 3600000,
             httpOnly: false, // Permitir el acceso a la cookie mediante JavaScript
             secure: process.env.NODE_ENV === 'production', // Usar solo HTTPS en producción
         });

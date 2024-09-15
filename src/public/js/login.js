@@ -1,4 +1,6 @@
 const form = document.getElementById('login-form-items');
+const userInput = document.querySelector('.user-input');
+const passwordInput = document.querySelector('.password-input');
 
 form.addEventListener('submit', e => {
     e.preventDefault();
@@ -15,6 +17,10 @@ form.addEventListener('submit', e => {
     .then(result => {
         if (result.status === 200) {
             window.location.replace('/');
+        } else {
+            userInput.value = "";
+            passwordInput.value = "";
+            alert("Error al iniciar sesión");
         }
     })
     .catch(error => {

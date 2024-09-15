@@ -15,7 +15,7 @@ body {
     background-color: #007bff;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     padding: 0 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -33,9 +33,11 @@ body {
     margin-right: 10px;
 }
 
-.navbar button:hover {
-    background-color: #007bff;
+.navbar h1 {
+    margin-right: 10px;
+    text-transform: uppercase;
     color: #ffffff;
+    font-weight: 100;
 }
 
 main {
@@ -61,6 +63,40 @@ ul.list-group .message-item {
     padding: 10px;
     margin-bottom: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+}
+
+.delete-message {
+    background-color: #d30000;
+    border: 1px solid #d30000;
+    border-radius: 5px;
+    color: #ffffff;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-right: 10px;
+}
+
+.delete-message:hover {
+    background-color: #ffffff;
+    color: #d30000;
+}
+
+.edit-message {
+    background-color: #d3a200;
+    border: 1px solid #d3a200;
+    border-radius: 5px;
+    color: #ffffff;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-right: 10px;
+}
+
+.edit-message:hover {
+    background-color: #ffffff;
+    color: #d3a200;
 }
 
 p.no-messages {
@@ -73,9 +109,9 @@ p.no-messages {
     justify-content: space-between;
     align-items: center;
     background-color: #ffffff;
-    padding: 10px;
+    padding: 10px 10%;
     border-top: 1px solid #ddd;
-    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
 }
 
 .message-form input {
@@ -99,11 +135,4 @@ p.no-messages {
 
 .message-form button:hover {
     background-color: #0056b3;
-}
-
-@media (max-height: 915px) {
-    .message-form {
-        position: absolute;
-        bottom: 0;
-    }
 }
